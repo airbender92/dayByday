@@ -1,18 +1,10 @@
 /*
  * @Author: wangyunbo
- * @Date: 2021-05-13 10:20:20
- * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-13 10:20:35
- * @Description: file content
- * @FilePath: \dayByday\vue-jest\example.spec.js
- */
-/*
- * @Author: wangyunbo
  * @Date: 2021-05-13 09:30:14
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-13 10:17:34
+ * @LastEditTime: 2021-05-13 11:22:01
  * @Description: file content
- * @FilePath: \istorm-cm-ui\tests\unit\main\visualization\capacityTopo\capacityTopo.spec.js
+ * @FilePath: \dayByday\vue-jest\example.spec.js
  */
 
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
@@ -81,7 +73,7 @@ beforeEach(() => {
         code: 200,
         data: {
           combos: [],
-          edges: [{source: 'name', target: 'name2'}],
+          edges: [{source: 1, target: 2}],
           nodes: [{id: 1, name: 'name'}, {id: 2, name: 'name2'}]
         }
       })
@@ -138,5 +130,34 @@ describe("capacityTopo.vue", () => {
     expect(windowSpy).toBeCalled();
     wrapper.vm.$nextTick();
     expect(window.innerWidth).toBe(testWidth);
+  });
+
+  it("onEvent 测试", () => {
+    expect.assertions(1);
+    const mockMethod = jest.fn();
+    wrapper = createWrapper();
+    const args = {
+      params: {},
+      event: mockMethod
+    }
+    wrapper.vm.onEvent(args);
+    expect(mockMethod).not.toBeCalled()
+  });
+
+  it("fetchData 测试", async () => {
+    expect.assertions(3);
+    const initSyp = jest.spyOn(capacityTopo.methods, 'init');
+    wrapper = createWrapper();
+    const createTreeData = jest.fn();
+    const uniqueKey = jest.fn();
+    const getMaxFloor = jest.fn();
+    wrapper.vm.fetchData();
+    expect(actions.GetCapacityTopoDatas).toBeCalled();
+    await wrapper.vm.$nextTick();
+    createTreeData();
+    uniqueKey();
+    getMaxFloor();
+    expect(wrapper.vm.totalLevel).toBe(2);
+    expect(initSyp).toBeCalled();
   })
 })
