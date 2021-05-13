@@ -1,0 +1,114 @@
+/**
+there’s the @mixin notation. 
+As for the function declaration, 
+the name of the mixin comes right after it, 
+and then the parameters (if any). Unlike functions, when
+mixins have no parameters, the parentheses are optional.
+*/
+// =====================================================
+/*
+To use a mixin, 
+you have to call it with the @include directive (+ symbol in Sass
+indented syntax) followed by the nameof the mixin. 
+If needed, the parameters follow
+*/
+// ========================================================
+// example: horizontally center a block element
+@mixin center {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  @include center;
+}
+
+
+// output: 
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// ===============================================
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+ }
+// example:
+.foo {
+  @include size(100%, 42px);
+} 
+.bar {
+  @include size(100px);
+}
+// output:
+.foo {
+  width: 100%;
+  height: 42px;
+}
+.bar {
+  width: 100%;
+  height: 100%;
+}
+// =======================================
+/**
+The @content directive—which has no other form than simply @content—allows
+authors to pass block of styles to their mixins. When a mixin has one or more
+@content directives defined in its core, it can be given custom content between
+braces ({ and }), like so:
+*/
+@mixin my-mixin {
+  @content;
+}
+
+.foor {
+  @include my-mixin {
+    // we can add stuff here
+  }
+}
+// example: 
+@mixin on-event {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+.foo {
+  color: blue;
+  @include on-event {
+    color: red;
+  }
+}
+// output: 
+.foo {
+  color: blue;
+}
+.foo:hover, .foo:active, .foo:focus {
+  color: red;
+}
+/**
+the @content directive is especially useful when building dynamic
+selectors or context blocks, such as @media or @supports.
+*/
+// ============================================================
+
+/**************mixins different with function*********************/
+/*
+. Just remember the difference between the two: a function returns
+a value, while a mixin outputs CSS code
+*/
+/**************mixins different with function end*********************/
+// example:
+@mixin message($color, $background-color: lighten($color, 20%)) {
+  color: $color;
+  background-color: $background-color;
+}
+.message {
+  
+}
