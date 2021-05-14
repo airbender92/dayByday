@@ -3,3 +3,6 @@ A conditional structure in Sass always starts with the @if keyword, directlyfoll
 by an expression. This expression can be almost anything: a variable, a function
 call, a raw value, an equation
 */
+@if $condition {
+  // Then do something
+}
