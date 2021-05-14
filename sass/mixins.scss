@@ -110,5 +110,15 @@ a value, while a mixin outputs CSS code
   background-color: $background-color;
 }
 .message {
-  
+  padding: 10px;
+  border: 1px solid currentColor;
+}
+.message-info {
+  @include message(blue)
+}
+.message-danger {
+  @include message(red)
+}
+.message-confirm {
+  @include message(green);
 }
