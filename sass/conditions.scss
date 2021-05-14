@@ -5,4 +5,76 @@ call, a raw value, an equation
 */
 @if $condition {
   // Then do something
+} @else {
+  // Do something else
 }
+// ===================================
+// only two values are falsy in Sass: false and null
+// =====================================
+// example: 
+// define whether old versions of IE should be supported
+$support-ie: true !default;
+
+// If `$support-ie` is truthy, then output the code block
+@if $support-ie {
+  .clearfix {
+    *zoom: 1;
+  }
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+// example: 
+$number: 42;
+
+.foo {
+  @if ($number > 1337) {
+    content: "Value is greater than 1377px.";
+  } @else if ($number >= 0) {
+    content: "Vaue is between 0 and 1337";
+  } @else {
+    content: "Value is lower than 0";
+  }
+}
+
+/**
+each component of the expression is evaluated on its own, then the results of these
+evaluations interact with the and and or keywords. For instance
+*/
+// example: 
+$apple: true;
+$cherry: false;
+
+// This statement is evaluated as such:
+// @if true and false {...}
+// Because `false` isn't a truthy value, the statement doesn't match
+@if $apple and $cherry {...}
+
+// This statement is evaluated as such:
+// @if true or false {...}
+// Because `true` is a truthy value, the statement does match
+@if $apple or $cherry {...}
+
+// example
+.foo {
+  @if $apple and ($cherry or $orange) {
+    color: "$apple must be truthy and either $cherry or $orange (or both) must be trutht"
+  }
+
+  @if ($apple and $cherry) or $orange {
+    color: "Both $apple and $cherry, or $orange (or all of them) must be truthy"
+  }
+}
+
+// ============================================
+/**
+The first argument of the if(..) function is the condition, the second one is the
+result if the condition is truthy, and the third one is the returned value if the condition is falsy. This function is useful when wanting toshorten an @if/@else statement
+to a single line:
+*/
+$background-color: if($error, red, green);
+// ===========================================
+// Loops
