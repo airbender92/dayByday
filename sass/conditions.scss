@@ -78,3 +78,76 @@ to a single line:
 $background-color: if($error, red, green);
 // ===========================================
 // Loops
+
+// Using direct numbers and `through`
+@for $i from 1 through 5 {
+  // Code to execute 5 times, where `$i` equals:
+  // 1
+  // 2
+  // 3
+  // 4
+  // 5
+ }
+ // Using variables and `to`
+ $start: 2;
+ $end: 4;
+ @for $index from $start to $end {
+  // Code to execute 2 times, where `$index` equals:
+  // 2
+ // 3
+}
+// =========================================
+/**
+Especially if you have to update the gap between two arrivals,
+or the number of items. This is typically where a for-loop can kick in and save the
+day
+*/
+@for $i from 1 through 10 {
+  .item:nth-child(#{$i}) {
+  animation-delay: ($i - 1) * 0.1s;
+  }
+ }
+
+ @for $i from 1 through 10 {
+  .item:nth-child(#{$i}) {
+  border: 1px solid hsl($i * 15, 75%, 75%);
+  }
+ }
+
+/**
+to apply different font
+sizes to the six levels of headings we have in HTML. We could loop through a list
+of six sizes and apply them respectively to each level of heading:
+*/
+// example
+$sizes: (2em, 1.75em, 1.5em, 1.25em, 1em, 0.75em);
+@for $i from 1 through length($sizes) {
+ h#{$i} {
+ font-size: nth($sizes, $i);
+ }
+}
+
+// output: 
+h1 { font-size: 2em; }
+h2 { font-size: 1.75em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.75em; }
+
+ // ========================================
+/**
+In the following scenario, the
+$sizes list has seven values. We want to loop through the values of the list, but
+only up to six values. We therefore need to take the minimum number between six
+and the length of the list as the end index of the loop:
+*/
+// example:
+$sizes: (2em, 1.75em, 1.5em, 1.25em, 1em, 0.75em, 0.5em); // 7 value
+@for $i from 1 through min(length($sizes), 6) {
+ h#{$i} {
+ font-size: nth($sizes, $i);
+ }
+}
+
+// =======================each loop================================
