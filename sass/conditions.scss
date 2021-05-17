@@ -169,3 +169,53 @@ $authors: ('hugo', 'miriam');
 }
 
 // ====================================
+/**
+A simple each-loop is written as follows:
+1. the @each directive
+2. the name of the item variable
+3. the keyword in
+4. the collection to iterate over
+*/
+// example:
+$alphabet: (a b c d e f g h i j k l m n o p q r s t u v w x y z);
+@each $letter in $alphabet {
+ // Do something with `$letter`
+}
+
+$authors: ("hugo", 'miriam');
+@each $author in $authors {
+  .section-#{$author} {
+    background-image: url("/images/authors/#{$author}.jpg");
+  }
+}
+
+// ============================================
+// input:
+$authors: (
+  ('hugo', 'hugo_giraudel.jpg'),
+  ('miriam', 'suzanne-miriam.png')
+);
+
+@each $author, $filename in $authors {
+  .section-#{$author} {
+    background-image: url('/images/authors/#{$filename}');
+  }
+}
+// output:
+.section-hugo {
+  background-image: url("/images/authors/hugo_giraudel.jpg");
+ }
+ .section-miriam {
+  background-image: url("/images/authors/suzanne-miriam.png");
+ }
+
+ // ===========================================
+ $authors: (
+  ('hugo', 'hugo_giraudel.jpg', deeppink),
+  ('miriam', 'suzanne-miriam.png', hotpink)
+ );
+ @each $author, $fielname, $color in $authors {
+   .section-#{$author} {
+     background-image: url('/images/authors/#{$filename}');
+   }
+ }
