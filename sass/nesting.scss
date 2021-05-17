@@ -1,0 +1,77 @@
+// example: 
+.container {
+  margin: 0 auto;
+  max-width: 42em;
+  padding: 0 1em;
+  p, li {
+  text-indent: 1em;
+  }
+ }
+ // output: 
+.container {
+ margin: 0 auto;
+ max-width: 42em;
+ padding: 0 1em;
+}
+.container p,
+.container li {
+ text-indent: 1em;
+}
+// ===============================
+/**
+What’s nice about this is that the p rule set is still able to access $rhythm because
+it’s been defined in a parent scope. We get the best of both worlds: our variable is
+scoped to a specific context (not global), and we can use it to share a value between
+several rule sets. Win-win
+**/
+.container {
+  $rhythm: 1em;
+  margin: 0 auto;
+  max-width: 42em;
+  padding: 0 $rhythm;
+  p {
+  text-indent: $rhythm;
+  }
+ }
+// Context Nesting
+// example:
+@media screen {
+  .navigation li {
+    display: block;
+    @media (min-width: 42em) {
+      display: inline-block;
+    }
+  }
+ }
+ // output:
+ @media screen {
+  .navigation li {
+  display: block;
+  }
+ }
+ @media screen and (min-width: 42em) {
+  .navigation li {
+    display: inline-block;
+  }
+ }
+ 
+ // ==============@supports===============
+ // example:
+ .navigation {
+   display: block;
+   @supports (display: flex) {
+     display: flex;
+   }
+ }
+ // output: 
+ .navigation {
+  display: block;
+ }
+ @supports (display: flex) {
+  .navigation {
+    display: flex;
+  }
+ }
+ 
+ // =================@at-root=======================
+ 
