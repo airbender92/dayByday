@@ -151,3 +151,21 @@ $sizes: (2em, 1.75em, 1.5em, 1.25em, 1em, 0.75em, 0.5em); // 7 value
 }
 
 // =======================each loop================================
+/**
+As an example, consider the following code aimed at going through the alphabet,
+one letter after the other. We first define a list of 26 letters. Then we loop through
+it with an each-loop, accessing the current letter in the loop with $letter:
+**/
+$alphabet: (a b c d e f g h i j k l m n o p q r s t u v w x y z);
+@each $letter in $alphabet {
+ // Do something with `$letter`
+}
+// ==================================
+$authors: ('hugo', 'miriam');
+@each $author in $authors {
+ .section-#{$author} {
+ background-image: url('/images/authors/#{$author}.jpg');
+ }
+}
+
+// ====================================
