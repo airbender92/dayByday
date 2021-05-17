@@ -219,3 +219,38 @@ $authors: (
      background-image: url('/images/authors/#{$filename}');
    }
  }
+
+ // =================while-loop=======================
+ // example: 
+ $number: 4;
+ @while ($number > 0) {
+   // do something with `$number`
+   $number: $number - 1;
+ }
+
+ // example:
+ $message-themes: (
+  ('info', blue),
+  ('confirm', green),
+  ('warning', red),
+ );
+
+ @mixin message($color, $background-color: null) {
+   color: $color;
+   @if type-of($color) == 'color' {
+    background-color: lighten($color, 20%);
+   } @else {
+     @warn 'Parameter $color for message mixin should be a color'
+   }
+ }
+
+ .message {
+   padding: 10px;
+   border: 1px solid currentColor;
+ }
+
+ @each $theme, $color in $message-themes {
+   .message-#{$theme} {
+     @include message($color);
+   }
+ }
