@@ -1,0 +1,103 @@
+.message {
+  background-color: gray;
+  border: 1px solid black;
+  margin: 1em;
+ }
+ .info {
+  @extend .message;
+  background-color: blue;
+ }
+ .warning {
+  @extend .message;
+  background-color: red;
+ }
+
+ // ====================================
+ // Mixin Input
+ @mixin clearfix {
+   &::after {
+     content: "";
+     display: table;
+     clear: both;
+   }
+ }
+
+ .emory {
+   @include clearfix;
+ }
+
+ .gracie {
+   @include clearfix;
+ }
+
+ .miko {
+   @include clearfix;
+ }
+
+ /* Mixin Output */
+ .emory::after {
+  content: '';
+  display: table;
+  clear: both;
+ }
+ .gracie::after {
+  content: '';
+  display: table;
+  clear: both;
+ }
+ .miko::after {
+  content: '';
+  display: table;
+  clear: both;
+ }
+
+ // extends Input
+ .clearfix::after {
+   content: '';
+   display: table;
+   clear: both;
+ }
+ .emory {
+   @extend .clearfix;
+ }
+
+ .gracie {
+   @extend .clearfix;
+ }
+
+ .miko {
+   @extend .clearfix;
+ }
+
+ /* Extends output */
+ .clearfix::after, .emory:after, .gracie::after, .miko:after {
+   content: '';
+   display: table;
+   clear: both;
+ }
+
+ // =============placegolder selector=================
+ // placeholder input:
+ %clearfix::after {
+   content: "";
+   display: table;
+   clear: both;
+ }
+
+ .emory {
+   @extend .clearfix;
+ }
+ .gracie {
+   @extend .clearfix;
+ }
+ .miko {
+   @extend .clearfix;
+ }
+ // placeholder output: 
+ .emory::after, .gracie::after, .miko::after {
+   content: '';
+   display: table;
+   clear: both;
+ }
+
+ 
