@@ -74,4 +74,55 @@ several rule sets. Win-win
  }
  
  // =================@at-root=======================
+ /**
+ The @at-root directive was introduced so as to be able to emit a style block at the
+ root of the document, rather than nest it beneath its parent selectors
+ */
+
+ // error example:
+ .button {
+  display: inline-block;
+  a& {
+  text-decoration: none;
+  }
+ }
+// error info:
+/**
+Invalid CSS after "a": expected "{", was "&" "&" may only be used at
+the beginning of a compound selector.
+*/
+// corrected:
+.button {
+  display: inline-block;
+  a#{&} {
+    text-decoration: none;
+  }
+ }
+ // output: 
+ .button {
+  display: inline-block;
+ }
+ .button a.button {
+  text-decoration: none;
+ }
+ /*
+ To avoid having the a#{&} selector actually nested within the .button rule set, we
+can make good use of the @at-root directive and have Sass output this rule set at
+the root of the document:
+ */
+ // example:
+ .button {
+  color: red;
+  @at-root a#{&} {
+  color: blue;
+  }
+ }
+ // output: 
+ .button {
+  display: inline-block;
+ }
+ a.button {
+  text-decoration: none;
+ }
+ 
  
