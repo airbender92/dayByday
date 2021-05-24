@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-17 09:28:53
+ * @LastEditTime: 2021-05-24 09:52:20
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -25,4 +25,10 @@
 git checkout -b 本地分支名称 origin/远程分支名称
 // 推送到指定分支
 git push origin 本地分支:远端希望创建的分支
+```
+```javascript
+Git克隆指定分支、指定目录
+git clone -b 分之名 http的git地址
+
+git clone -b 分之名 http的git地址 c:/User/zp/dev指定目录
 ```
