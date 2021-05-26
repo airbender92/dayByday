@@ -2,14 +2,14 @@
  * @Author: wangyunbo
  * @Date: 2021-05-13 09:30:14
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-13 11:22:01
+ * @LastEditTime: 2021-05-26 11:21:21
  * @Description: file content
  * @FilePath: \dayByday\vue-jest\example.spec.js
  */
 
 import { shallowMount, mount, createLocalVue } from '@vue/test-utils';
 import elementUI from "element-ui";
-
+import VueRouter from 'vue-router'
 import Vuex from 'vuex';
 
 import capacityTopo from  '@/views/main/visualization/capacityTopo';
@@ -17,7 +17,7 @@ import capacityTopo from  '@/views/main/visualization/capacityTopo';
 let localVue;
 let store;
 let actions;
-let router;
+const router = new VueRouter();
 let wrapper;
 
 // 模拟依赖
@@ -65,6 +65,7 @@ function createWrapper(params = {}, needMount = false) {
 beforeEach(() => {
   localVue = createLocalVue();
   localVue.use(Vuex);
+  localVue.use(VueRouter);
   localVue.use(elementUI);
   actions = {
     GetCapacityTopoDatas: jest.fn().mockImplementation(() =>
@@ -86,7 +87,7 @@ beforeEach(() => {
     })
   ),
 
-  },
+  };
     store = new Vuex.Store({
       state: {},
       modules: {
