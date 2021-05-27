@@ -1,10 +1,10 @@
 /*
  * @Author: wangyunbo
  * @Date: 2021-04-08 10:42:14
- * @LastEditTime: 2021-04-19 17:01:47
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-05-27 17:46:17
+ * @LastEditors: wangyunbo
  * @Description: In User Settings Edit
- * @FilePath: \istorm-cm-ui\jest.config.js
+ * @FilePath: \dayByday\vue-jest\jest.config.js
  */
 const path = require("path");
 
@@ -47,6 +47,6 @@ module.exports = {
     "<rootDir>/src/utils",
   ],
   snapshotSerializers: ["<rootDir>/node_modules/jest-serializer-vue"],
-
+  setupFiles: ["jest-canvas-mock"]
 }
 
