@@ -1,3 +1,11 @@
+/*
+ * @Author: wangyunbo
+ * @Date: 2021-05-31 11:54:55
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-05-31 12:03:39
+ * @Description: file content
+ * @FilePath: \dayByday\typescript\Arrays.ts
+ */
 // ============= Enums ====================
 // By default all enum values are resolved to numbers. Let's say if you have something like
 
@@ -31,3 +39,41 @@ for(let value in SomeEnum) {
 enumValues.forEach(v => console.log(v))
 //A
 //B
+
+// =============================================
+
+enum SourceEnum {
+    value1 = 'value1',
+    value2 = 'value2'
+}
+
+enum AdditionToSourceEnum {
+    value3 = 'value3',
+    value4 = 'value4'
+}
+
+type TestEnumType = SourceEnum | AdditionToSourceEnum;
+
+let TestEnum = Object.assign({}, SourceEnum, AdditionToSourceEnum);
+
+function check(test: TestEnumType) {
+    return test === TestEnum.value2;
+}
+console.log(TestEnum.value1)
+console.log(TestEnum.value2 === 'value2')
+console.log(check(TestEnum.value2))
+console.log(check(TestEnum.value3))
+
+// ===========extends for enum ========================
+class Enum {
+    constructor(protected value: string) {}
+
+    public toString() {
+        return String(this.value);
+    }
+
+    public is(value: Enum | string) {
+        return this.value = value.toString();
+    }
+}
+
