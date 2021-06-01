@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-24 09:52:20
+ * @LastEditTime: 2021-06-01 16:30:10
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -31,4 +31,9 @@ Git克隆指定分支、指定目录
 git clone -b 分之名 http的git地址
 
 git clone -b 分之名 http的git地址 c:/User/zp/dev指定目录
+```
+
+```bat
+git rm -r --cached --ignore-unmatch folder_name
+--ignore-unmatch is important here, without that option git will exit with error on the first file not in the index.
 ```

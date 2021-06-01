@@ -1,11 +1,12 @@
 /*
  * @Author: wangyunbo
  * @Date: 2021-04-08 10:42:14
- * @LastEditTime: 2021-05-27 17:46:17
+ * @LastEditTime: 2021-06-01 13:05:21
  * @LastEditors: wangyunbo
  * @Description: In User Settings Edit
  * @FilePath: \dayByday\vue-jest\jest.config.js
  */
+
 const path = require("path");
 
 module.exports = {
@@ -25,10 +26,12 @@ module.exports = {
     'json',
     'vue'
   ],
+  //https://jestjs.io/docs/webpack
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "<rootDir>/tests/unit/__mocks__/fileMock.js", // 模拟加载静态文件
+      "\\.(css|less)$": "<rootDir>/tests/unit/__mocks__/styleMock.js"
   },
   testMatch: [
     // 匹配测试用例的文件
@@ -47,6 +50,9 @@ module.exports = {
     "<rootDir>/src/utils",
   ],
   snapshotSerializers: ["<rootDir>/node_modules/jest-serializer-vue"],
-  setupFiles: ["jest-canvas-mock"]
+  setupFiles: ["jest-canvas-mock"],
+  globals: {
+    CONFIG: '/'
+  }
 }
 
