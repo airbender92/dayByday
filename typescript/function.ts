@@ -90,3 +90,27 @@ interface INumberFunction {
  }
 
  // ==============Functions with Union Types===============
+
+ function whatTime(hour: number|string, minute: number|string):string {
+  return hour + ':' + minute
+ }
+
+ whatTime(1, 30)   // '1:30'
+ whatTime('1', 30) // '1:30'
+ //TypeScript treats these parameters as a single type that is a union of the other types, so your function must be able
+// to handle parameters of any type that is in the union
+
+function addTen(start: number|string):number {
+  if(typeof start === 'string') {
+    return parseInt(start) + 10;
+  } else {
+    return start + 10
+  }
+}
+
+// ================== Types of Functions ==========================
+// named funcitons
+function multiply(a, b) { return a + b }
+
+// anonymous functions
+let multiply = function(a, b) { return a * b }
