@@ -1,3 +1,11 @@
+/*
+ * @Author: wangyunbo
+ * @Date: 2021-06-02 08:49:12
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-06-03 09:11:52
+ * @Description: file content
+ * @FilePath: \dayByday\typescript\Classes.ts
+ */
 // , TypeScript classes may implement interfaces or make use of generics.
 
 // ==================== Abstract Classes ========================
@@ -45,3 +53,69 @@ For this reason, abstract classes can conceptually be considered a combination o
  */
 
 // ===================Simple class========================
+class Car1 {
+    public position: number = 0;
+    private speed: number = 42;
+
+    move() {
+        this.position += this.speed
+    }
+}
+
+// ====================Basic inheritance==========================
+// The SelfDrivingCar class overrides the move() method 
+// and uses the base class implementation using super
+class SelfDrivingCar extends Car1 {
+    move() {
+        super.move();
+        super.move();
+    }
+}
+
+// ================= Constructors ========================
+// One of the best things in TypeScript, is automatic assignment of constructor parameters to the relevant property.
+class Car2 {
+    public position: number;
+    protected speed: number;
+
+    constructor(position: number, speed: number) {
+        this.position = position;
+        this.speed = speed;
+    }
+
+    move() {
+        this.position += this.speed;
+    }
+}
+
+// All this code can be resumed in one single constructor:
+class Car4 {
+    constructor(public position: number, protected speed: number) {}
+
+    move() {
+        this.position += this.speed
+    }
+}
+// above will be translated to js :
+var Car44 = (function(){
+    function Car44(position, speed) {
+        this.position = position;
+        this.speed = speed;
+    }
+    Car44.prototype.move = function() {
+        this.position += this.speed;
+    }
+    return Car44;
+}())
+
+// Constructors of derived classes have to call the base class constructor with super().
+class SelfDrivingCar2 extends Car4 {
+    constructor(startAutoPilot: boolean) {
+        super(0, 42);
+        if(startAutoPilot) {
+            this.move();
+        }
+    }
+}
+let car4 = new SelfDrivingCar2(true);
+console.log(car4.position)
