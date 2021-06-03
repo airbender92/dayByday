@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-21 09:40:45
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-05-21 09:41:30
+ * @LastEditTime: 2021-06-03 14:34:28
  * @Description: file content
  * @FilePath: \dayByday\typescript\axios.ts
  */
@@ -17,3 +17,5 @@
  const response: AxiosResponse<Todo[]> = await axios.get("blabla");
 
  */
+
+ 
