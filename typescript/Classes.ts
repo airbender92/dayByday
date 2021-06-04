@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-06-02 08:49:12
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-06-03 09:11:52
+ * @LastEditTime: 2021-06-04 09:26:56
  * @Description: file content
  * @FilePath: \dayByday\typescript\Classes.ts
  */
@@ -119,3 +119,96 @@ class SelfDrivingCar2 extends Car4 {
 }
 let car4 = new SelfDrivingCar2(true);
 console.log(car4.position)
+
+// ================ Accessors =======================
+// TypeScript accessors allow us to add additional code in getters or setters.
+class CarA {
+    public position: number = 0;
+    private _speed: number = 42;
+    private _MAX_SPEED = 100;
+
+    move() {
+        this.position += this._speed;
+    }
+
+    get speed(): number {
+        return this._speed;
+    }
+
+    set speed(value:number) {
+        this._speed = Math.min(value, this._MAX_SPEED);
+    }
+}
+
+let carA = new CarA();
+carA.speed = 120;
+console.log(carA.speed)
+
+// ==========================Transpilation=================================
+// ts source
+class SomeClass {
+    public static SomeStaticValue: string = 'hello';
+    public someMemberValue: number = 15;
+    private somePrivateValue: boolean = false;
+
+    constructor() {
+        SomeClass.SomeStaticValue = SomeClass.getGoodbye();
+        this.someMemberValue = this.getFortyTwo();
+        this.somePrivateValue = this.getTrue();
+    }
+
+    public static getGoodbye(): string {
+        return 'goodbye'
+    }
+
+    public getFortyTwo():number {
+        return 42
+    }
+
+    private getTrue(): boolean {
+        return true;
+    }
+}
+
+// js source:(output)
+var SomeClassJS = (function(){
+    function SomeClassJS() {
+        this.someMemberValue = 15;
+        this.somePrivateValue = false;
+        SomeClassJS.SomeStaticValue = SomeClassJS.getGoodbye();
+        this.someMemberValue = this.getFortyTwo();
+        this.somePrivateValue = this.getTrue()
+    }
+    SomeClassJS.getGoodbye = function() {
+        return 'goodbye';
+    }
+    SomeClassJS.prototype.getFortyTwo = function () {
+        return 42;
+    }
+    SomeClassJS.prototype.getTrue = function() {
+        return true;
+    }
+    return SomeClassJS;
+}());
+SomeClassJS.SomeStaticValue = 'hello'
+// Static properties are added directly to the class object, 
+//whereas instance properties are added to the prototype.
+
+// ==========================Monkey patch a function into an existing class==================================
+/**
+ * Sometimes it's useful to be able to extend a class with new functions. 
+ * For example let's suppose that a string should
+ be converted to a camel case string. So we need to tell TypeScript,
+ that String contains a function called toCamelCase, which returns a string.
+ */
+interface String {
+    toCameCase(): string
+}
+String.prototype.toCameCase = function(): string {
+    return this.replace(/[^a-z]/ig, '')
+        .replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match: any, index: number) => {
+            return +match === 0 ? '' : match[index === 0 ? 'toLowerCase' : 'toUpperCase']()
+        })
+}
+
+"This is an example".toCameCase(); // => "thisIsAnExample"
