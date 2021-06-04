@@ -6,6 +6,9 @@
  * @Description: file content
  * @FilePath: \hatech-warning-realtime-micro-main-ui\tests\unit\dataAnalysis\dataAnalysis.spec.js
  */
+// https://www.npmjs.com/package/jest-canvas-mock
+npm i --save-dev jest-canvas-mock
+
 
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import elementUI from "element-ui";
