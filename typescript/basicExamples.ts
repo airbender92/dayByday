@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-06-16 08:50:59
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-06-16 09:00:10
+ * @LastEditTime: 2021-06-17 08:53:12
  * @Description: file content
  * @FilePath: \dayByday\typescript\basicExamples.ts
  */
@@ -38,3 +38,16 @@ class HondaCar extends Car5 {
     console.log(`this cars comes with seating capacity of ${this.seatingCapacity}`)
   }
 }
+
+new HondaCar('honda jazz', "1200cc", 4).describeHondaCar()
+
+// ===================static class variable example====================
+class StaticTest {
+  static countInstance: number = 0;
+  constructor() {
+    StaticTest.countInstance++;
+  }
+}
+new StaticTest();
+new StaticTest();
+console.log(StaticTest.countInstance)
