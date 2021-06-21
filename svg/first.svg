@@ -1,0 +1,90 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2021-06-21 09:16:27
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-06-21 09:16:29
+ * @Description: file content
+ * @FilePath: \dayByday\svg\index.html
+-->
+<!-- 
+  The <circle> element, 
+  for example, has an attribute r (meaning radius). 
+  The fact that the r attribute 
+has a value of 50 means (in the simplest and standard case) that the circle’s radius will be 50 pixels.
+ -->
+ <!-- 
+   The <svg> element has the attribute/value pair xmlns=”http://www.w3.org/2000/svg” (meaning that 
+the XML namespace used to interpret the document will be one specified by the W3C). 
+  -->
+  <!-- 
+    The xmlns attribute (which appears not to have been a part of the language originally, because the 
+Adobe and Opera viewers are unique in not requiring it) is necessary for most browsers to be able to 
+display the code as SVG.
+   -->
+<!-- <svg xmlns="http://www.w3.org/2000/svg">
+  <circle r="50" />
+</svg> -->
+
+
+<!-- Screen Coordinates -->
+<!-- 
+  Move the circle to the center of the screen. You do this by setting the x and y coordinates of 
+the center of the circle (cx and cy, respectively) to 50 percent, which is measured relative to the 
+width and height of the browser window
+ -->
+ <!-- 
+   Increase the radius and set it as a fixed proportion of the browser’s width.
+  -->
+  <!-- 
+    Change its color. You can do this by setting the fill attribute to a named color, or in a variety of 
+other ways (e.g., using CSS or HTML hexadecimal values, RGB values, or HSB values).
+   -->
+   <!-- 
+     Change the code so that just the outside of the circle is colored. This actually involves three 
+tasks: setting the fill of the circle to none so that its interior is transparent, setting its stroke 
+to some color (e.g., darkorange), and defining a width for the stroke. The code below also 
+adjusts the color from the named color darkorange to #e60, which is a bit lower on the 
+red channel and a good bit lower on the green channel than the darkorange hexadecimal 
+equivalent, #FF8C00.
+    -->
+<!-- <svg xmlns="http://www.w3.org/2000/svg">
+  <circle r="25%" cx="50%" cy="50%" fill="none" stroke="#e60" stroke-width="25" />
+</svg> -->
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+  <circle cx="30%" cy="50%" r="25%"
+    fill="lightgreen" stroke="#e60" stroke-width="25"/>
+  <circle cx="50%" cy="50%" r="25%"
+    fill="none" stroke="#e60" stroke-width="25"/>
+</svg> -->
+<!-- 
+  The <rect> element, like the <circle>, can have fill, stroke, stroke-width, and other attributes. 
+The x and y attributes specify the rectangle’s upper-left corner, and height and width specify 
+its size
+ -->
+ <!-- 
+   An ellipse, like a circle, has a center defined by cx and cy. However, owing to the difference 
+in its vertical and horizontal extents, it has two radii: ry and rx, respectively. Because this oval 
+is taller than it is wide, you can approximate the values above fairly closely by testing a few 
+values and seeing what happens. Alternatively, you could actually measure the drawing on the 
+screen to duplicate the effect more precisely
+  -->
+  <!-- 
+    The preceding code introduces a new attribute: opacity. All the typical drawn objects (such as 
+rect, circle, polygon, ellipse, and path) all have an opacity attribute. When opacity is set to “1.0”, 
+an object’s stroke and fill are completely opaque. When opacity is set to “0.0”, the object is 
+completely invisible. If you don’t specify opacity, the browser assumes that opacity is 1. If you 
+wish to specify different levels of opacity for an object’s stroke and fill, you can do so using 
+the attributes stroke-opacity and fill-opacity.
+   -->
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Collage involving &lt;rect&gt; , &lt;clircl&gt; and &lt;ellipse&gt; </title>
+  <circle cx="50%" cy="50%" r="25%" fill="none" stroke="#e60" stroke-width="25"></circle>
+  <rect x="10%" width="80%" y="50%" height="10%"
+    fill="#8ff" stroke="black" stroke-width="6"></rect>
+  <ellipse cx="50%" cy="50%" rx="10%" ry="40%" fill="yellow" fill-opacity=".45"
+  stroke="purple" stroke-width="15"></ellipse>
+</svg>
+
