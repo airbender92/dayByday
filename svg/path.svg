@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <path stroke="black"
+    d="M 50 50 L 150 150" />
+  <path d="M 150 150 L 250 150 350 100" />
+  <path d="M 70,290 L 150,150 200,250 40,250 100,150 170,290"/>
+  <path d="M 70,290 L 150,150 200,250 40,250 100,150 170,290"
+    fill-rule="evenodd" transform="translate(250, 0)"/>
+</svg>
+
