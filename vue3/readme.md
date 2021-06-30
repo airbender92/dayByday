@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-06-22 10:46:03
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-06-22 13:47:41
+ * @LastEditTime: 2021-06-30 13:41:12
  * @Description: file content
  * @FilePath: \dayByday\vue3\readme.md
 -->
@@ -35,6 +35,8 @@ Undefined
 
 In Vue3, in addition to the watch method, there’s a new watchEffect method to track a reactive dependency and run a method when it runs.
 
-
+### Vue2 To Vue3
+- Q: How do I turn off the productionTip warning in Vue 3?
+ - A: config.productionTip Removed
 
 
