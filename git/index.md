@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-06-01 16:30:10
+ * @LastEditTime: 2021-07-02 17:14:08
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -36,4 +36,17 @@ git clone -b 分之名 http的git地址 c:/User/zp/dev指定目录
 ```bat
 git rm -r --cached --ignore-unmatch folder_name
 --ignore-unmatch is important here, without that option git will exit with error on the first file not in the index.
+```
+
+```js
+远程分支版本回退的方法
+如果你的错误提交已经推送到自己的远程分支了，那么就需要回滚远程分支了。
+1.首先要回退本地分支：
+git reflog
+git reset --hard Obfafd
+
+2.紧接着强制推送到远程分支：
+
+git push -f origin master ## 这里假设只有一个master分支
+注意：本地分支回滚后，版本将落后远程分支，必须使用强制推送覆盖远程分支，否则无法推送到远程分支
 ```
