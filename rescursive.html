@@ -1,0 +1,662 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2021-07-07 17:16:41
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-07-07 17:17:05
+ * @Description: file content
+ * @FilePath: \dayByday\rescursive.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const arr = [
+      {
+        routeName: 'bia',
+        name: '业务影响分析',
+        code: 'bcms_11',
+        path: '/main/bia/analysisPreparation/analysisPreparations',
+        icon: 'bia',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'yak',
+            text: '分析准备',
+            path: '',
+            code: 'bcms_11_1',
+            menuItem: [
+              {
+                iconClass: 'qbjh',
+                text: '计划管理',
+                path: '/main/bia/planManage',
+                code: 'bcms_11_1_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'yewudiaoyan',
+            text: '业务调研',
+            path: '',
+            code: 'bcms_11_6',
+            menuItem: [
+              {
+                iconClass: 'yewudiaoyan',
+                text: '业务调研',
+                path: '/main/bia/questionSearchManage',
+                code: 'bcms_11_6_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'cjgl',
+            text: '问卷集管理',
+            path: '',
+            code: 'bcms_11_2',
+            menuItem: [
+              {
+                iconClass: 'dati',
+                text: '问卷管理',
+                path: '/main/bia/biaQuestionSearchManageNew',
+                code: 'bcms_11_2_1',
+              },
+              {
+                iconClass: 'yak',
+                text: '题库管理',
+                path: '/main/bia/questionBankManage',
+                code: 'bcms_11_2_2',
+              },
+            ],
+          },
+          {
+            iconClass: 'jisuan',
+            text: '分析计算',
+            path: '',
+            code: 'bcms_11_3',
+            menuItem: [
+              {
+                iconClass: 'zuzhi',
+                text: '模型管理',
+                path: '/main/bia/modelManage',
+                code: 'bcms_11_3_1',
+              },
+              {
+                iconClass: 'yabj',
+                text: '指标管理',
+                path: '/main/bia/modelIndexManage',
+                code: 'bcms_11_3_2',
+              },
+              {
+                iconClass: 'fenxi2',
+                text: '分析计算管理',
+                path: '/main/bia/analysisCalcManage',
+                code: 'bcms_11_3_3',
+              },
+            ],
+          },
+          {
+            iconClass: 'jbxx',
+            text: '结果查看',
+            path: '',
+            code: 'bcms_11_4',
+            menuItem: [
+              {
+                iconClass: 'ndjh',
+                text: '结果管理',
+                path: '/main/bia/resultManagement',
+                code: 'bcms_11_4_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'setting',
+            text: '基础管理',
+            path: '',
+            code: 'bcms_11_5',
+            menuItem: [
+              {
+                iconClass: 'zyzfl',
+                text: '业务管理',
+                path: '/main/bia/businessManagement',
+                code: 'bcms_11_5_1',
+              },
+              {
+                iconClass: 'setting',
+                text: '系统管理',
+                path: '/main/bia/systemManagement',
+                code: 'bcms_11_5_2',
+              },
+              {
+                iconClass: 'tuopu',
+                text: '渠道管理',
+                path: '/main/bia/channelManagement',
+                code: 'bcms_11_5_3',
+              },
+              {
+                iconClass: 'txgl',
+                text: '网点管理',
+                path: '/main/bia/outletsManagement',
+                code: 'bcms_11_5_4',
+              },
+              {
+                iconClass: 'zhgl',
+                text: '客户管理',
+                path: '/main/bia/customerManagement',
+                code: 'bcms_11_5_5',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        routeName: 'ra',
+        name: '风险评估',
+        code: 'bcms_3',
+        path: '/main/ra/analysisPreparation/analysisPreparations',
+        icon: 'ra',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'ywlxx',
+            text: '业务连续性自评估',
+            path: '/main/ra/businessAssessment',
+            code: 'bcms_12_7',
+          },
+          {
+            iconClass: 'fxfx',
+            text: '风险分析',
+            path: '/main/ra',
+            code: 'bcms_12',
+            menuItem: [
+              {
+                iconClass: 'yak',
+                text: '分析准备',
+                path: '',
+                code: 'bcms_12_1',
+                menuItem: [
+                  {
+                    iconClass: 'qbjh',
+                    text: '计划管理',
+                    path: '/main/ra/planManage',
+                    code: 'bcms_12_1_1',
+                  },
+                ],
+              },
+              {
+                iconClass: 'yewudiaoyan',
+                text: '业务调研',
+                path: '',
+                code: 'bcms_12_6',
+                menuItem: [
+                  {
+                    iconClass: 'yewudiaoyan',
+                    text: '业务调研',
+                    path: '/main/ra/questionSearchManage',
+                    code: 'bcms_12_6_1',
+                  },
+                ],
+              },
+              {
+                iconClass: 'cjgl',
+                text: '问卷集管理',
+                path: '',
+                code: 'bcms_12_2',
+                menuItem: [
+                  {
+                    iconClass: 'dati',
+                    text: '问卷管理',
+                    path: '/main/ra/raQuestionSearchManageNew',
+                    code: 'bcms_12_2_1',
+                  },
+                  {
+                    iconClass: 'yak',
+                    text: '题库管理',
+                    path: '/main/ra/questionBankList',
+                    code: 'bcms_12_2_3',
+                  },
+                ],
+              },
+              {
+                iconClass: 'jisuan',
+                text: '分析计算',
+                path: '',
+                code: 'bcms_12_3',
+                menuItem: [
+                  {
+                    iconClass: 'zuzhi',
+                    text: '模型管理',
+                    path: '/main/ra/modelManage',
+                    code: 'bcms_12_3_1',
+                  },
+                  {
+                    iconClass: 'fenxi2',
+                    text: '分析计算管理',
+                    path: '/main/ra/analysisCalcManage',
+                    code: 'bcms_12_3_3',
+                  },
+                ],
+              },
+              {
+                iconClass: 'jbxx',
+                text: '结果查看',
+                path: '',
+                code: 'bcms_12_4',
+                menuItem: [
+                  {
+                    iconClass: 'ndjh',
+                    text: '结果管理',
+                    path: '/main/ra/resultManagement',
+                    code: 'bcms_12_4_1',
+                  },
+                ],
+              },
+              {
+                iconClass: 'setting',
+                text: '基础信息管理',
+                path: '',
+                code: 'bcms_12_5',
+                menuItem: [
+                  {
+                    iconClass: 'menhu',
+                    text: '资产管理',
+                    path: '/main/ra/businessManagement',
+                    code: 'bcms_12_5_1',
+                  },
+                  {
+                    iconClass: 'txgl',
+                    text: '脆弱性管理',
+                    path: '/main/ra/fragility',
+                    code: 'bcms_12_5_2',
+                  },
+                  {
+                    iconClass: 'gaojing',
+                    text: '威胁管理',
+                    path: '/main/ra/threaten',
+                    code: 'bcms_12_5_3',
+                  },
+                  {
+                    iconClass: 'zhize',
+                    text: '控制措施管理',
+                    path: '/main/ra/controlMeasures',
+                    code: 'bcms_12_5_4',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        routeName: 'prePlanManagement',
+        name: '预案管理',
+        code: 'bcms_7',
+        path: '/main/prePlanManagement/sceneList',
+        icon: 'yagl',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'yabj',
+            text: '预案编撰',
+            path: '/main/prePlanManagement/prePlanCompilation',
+            code: 'bcms_7_3',
+          },
+          {
+            iconClass: 'yak',
+            text: '预案库',
+            path: '/main/prePlanManagement/preparednessLibrary',
+            code: 'bcms_7_4',
+          },
+          {
+            iconClass: 'buzhouji',
+            text: '步骤集管理',
+            path: '/main/prePlanManagement/stepSetManagement',
+            code: 'bcms_7_5',
+          },
+          {
+            iconClass: 'txgl',
+            text: '应急结构',
+            path: '/main/prePlanManagement/emergencyManagement',
+            code: 'bcms_7_6',
+          },
+          {
+            iconClass: 'cjgl',
+            text: '处置流程管理',
+            path: '/main/prePlanManagement/sceneManagement/sceneList',
+            code: 'bcms_18_3',
+          },
+        ],
+      },
+      {
+        routeName: 'emergencyManagement',
+        name: '应急管理',
+        code: 'bcms_18',
+        path: '/main/emergencyManagement/emergencyManagement',
+        icon: 'yjgl',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'yjxy',
+            text: '容错管理',
+            path: '/main/emergencyManagement/faultToleranceManagement',
+            code: 'bcms_18_1',
+          },
+          {
+            iconClass: 'yjcz',
+            text: '容灾管理',
+            path: '/main/emergencyManagement/disasterRecoveryManagement',
+            code: 'bcms_18_2',
+          },
+        ],
+      },
+      {
+        routeName: 'eventManagement',
+        name: '演练管理',
+        code: 'bcms_4',
+        path: '/main/eventManagement/annualPlan',
+        icon: 'ylgl1',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'ylgl',
+            text: '演练管理',
+            path: '',
+            code: 'bcms_4_2',
+            menuItem: [
+              {
+                iconClass: 'ndjh',
+                text: '年度计划',
+                path: '/main/eventManagement/annualPlan',
+                code: 'bcms_4_2_1',
+              },
+              {
+                iconClass: 'qbjh',
+                text: '所有计划',
+                path: '/main/eventManagement/allPlan',
+                code: 'bcms_4_2_2',
+              },
+              {
+                iconClass: 'ylfa',
+                text: '演练方案',
+                path: '/main/eventManagement/exercisePlan',
+                code: 'bcms_4_2_3',
+              },
+              {
+                iconClass: 'ylss',
+                text: '演练实施',
+                path: '/main/eventManagement/exerciseImplementation',
+                code: 'bcms_4_2_4',
+              },
+              {
+                iconClass: 'ylpg',
+                text: '演练评估',
+                path: '/main/eventManagement/exerciseEvaluation',
+                code: 'bcms_4_2_5',
+              },
+              {
+                iconClass: 'ylbg',
+                text: '演练报告',
+                path: '/main/eventManagement/exerciseReport',
+                code: 'bcms_4_2_6',
+              },
+            ],
+          },
+          {
+            iconClass: 'tzgl',
+            text: '通知管理',
+            path: '',
+            code: 'bcms_4_3',
+            menuItem: [
+              {
+                iconClass: 'qzgl',
+                text: '群组管理',
+                path: '/main/eventManagement/groupsManagement',
+                code: 'bcms_4_3_1',
+              },
+              {
+                iconClass: 'tzmb',
+                text: '通知模版',
+                path: '/main/eventManagement/messageTemplate',
+                code: 'bcms_4_3_2',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        routeName: 'basisManagement',
+        name: '基础资源',
+        code: 'bcms_2',
+        path: '/main/basisManagement/basicResourceCatergory',
+        icon: 'jczy',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'qzgl',
+            text: '系统码表',
+            path: '/main/basisManagement/systemTimer',
+            code: 'bcms_2_10',
+          },
+        ],
+      },
+      {
+        routeName: 'systemManagement',
+        name: '系统管理',
+        code: 'bcms_1',
+        path: '/main/systemManagement/roleManagement',
+        icon: 'xtgl',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'cdgl',
+            text: '菜单管理',
+            path: '/main/systemManagement/menuManagement',
+            code: 'bcms_1_7',
+          },
+          {
+            iconClass: 'license',
+            text: '更新License',
+            path: '/main/systemManagement/licenseManagement',
+            code: 'bcms_1_9',
+          },
+        ],
+      },
+      {
+        routeName: 'dailyManagement',
+        name: '日常管理',
+        code: 'bcms_13',
+        path: '/main/dailyManagement/dailyManagement',
+        icon: 'rcgl',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'yingyong',
+            text: '应用管理',
+            path: '/main/dailyManagement/applicationManagement',
+            code: 'bcms_2_6',
+          },
+          {
+            iconClass: 'qzgl',
+            text: '改进管理',
+            path: '',
+            code: 'bcms_6',
+            menuItem: [
+              {
+                iconClass: 'wtgl',
+                text: '问题管理',
+                path: '/main/dailyManagement/problemManage',
+                code: 'bcms_6_2',
+              },
+            ],
+          },
+          {
+            iconClass: 'yabj',
+            text: '计划管理',
+            path: '',
+            code: 'bcms_20',
+            menuItem: [
+              {
+                iconClass: 'yabj',
+                text: '计划管理',
+                path: '/main/dailyManagement/planManage',
+                code: 'bcms_20_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'yinhang',
+            text: '关系视图',
+            path: '/main/dailyManagement/relationalView',
+            code: 'bcms_2_8',
+          },
+          {
+            iconClass: 'cjgl',
+            text: '场景管理',
+            path: '/main/dailyManagement/scenesManage',
+            code: 'bcms_2_9',
+          },
+        ],
+      },
+      {
+        routeName: 'publicManagement',
+        name: '公共管理',
+        code: 'bcms_15',
+        path: '/main/publicManagement/publicManagement',
+        icon: 'jcgl',
+        isShow: true,
+        menu: [
+          {
+            iconClass: 'txgl1',
+            text: '体系管理',
+            path: '/main/publicManagement/systemManage',
+            code: 'bcms_14',
+          },
+          {
+            iconClass: 'mbgl',
+            text: '模板管理',
+            path: '/main/publicManagement/templateManagement',
+            code: 'bcms_1_6',
+          },
+          {
+            iconClass: 'jgbs',
+            text: '监管报送',
+            path: '',
+            code: 'bcms_17',
+            menuItem: [
+              {
+                iconClass: 'jgbs',
+                text: '监管报送',
+                path: '/main/publicManagement/regulatorySubmitted',
+                code: 'bcms_17_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'zyzgl',
+            text: '组织结构',
+            path: '/main/publicManagement/organization',
+            code: 'bcms_1_2_1',
+          },
+          {
+            iconClass: 'yabj',
+            text: '策略管理',
+            path: '',
+            code: 'bcms_19',
+            menuItem: [
+              {
+                iconClass: 'yabj',
+                text: '策略管理',
+                path: '/main/publicManagement/strategyManage',
+                code: 'bcms_19_1',
+              },
+            ],
+          },
+          {
+            iconClass: 'spgl',
+            text: '审批管理',
+            path: '/main/publicManagement/approvalManagement',
+            code: 'bcms_1_5',
+          },
+          {
+            iconClass: 'add',
+            text: '要素管理',
+            path: '/main/publicManagement/elementManagement',
+            code: 'bcms_2_5',
+          },
+          {
+            iconClass: 'jsgl',
+            text: '角色管理',
+            path: '/main/publicManagement/roleManagement',
+            code: 'bcms_1_1',
+          },
+          {
+            iconClass: 'xtrz',
+            text: '登录日志',
+            path: '/main/publicManagement/systemLog',
+            code: 'bcms_1_4',
+          },
+        ],
+      },
+    ];
+    function formatterPaths(res) {
+      let pathList = [];
+      function recurFinal(finalV) {
+        if (finalV.unique) {
+          pathList.push(finalV.unique);
+        }
+        if (finalV.menu) {
+          finalV.menu.forEach((item) => {
+            recurFinal(item);
+          });
+        }
+      }
+      recurFinal(res);
+      return pathList;
+    }
+    function find({ menu = [], ...object }, unique) {
+      let result;
+      if (object.unique === unique) return object;
+      return (
+        menu.some((o) => (result = find(o, unique))) &&
+        Object.assign({}, object, {
+          menu: [{ unique: result.unique, menu: result.menu }],
+        })
+      );
+    }
+
+    function formatterArr(arr = []) {
+      let max = 0;
+      function each(data = [], floor = 1) {
+        data.forEach((e) => {
+          e.floor = floor;
+          e.unique = e.path || e.code;
+          if ('menuItem' in e) {
+            e.menu = e.menuItem;
+          }
+          if (floor > max) {
+            max = floor;
+          }
+          if ((e.menu || []).length > 0) {
+            each(e.menu, floor + 1);
+          }
+        });
+      }
+      each(arr, 1);
+    }
+    formatterArr(arr);
+    console.log('new', arr);
+    const res = find({ menu: arr }, '/main/ra/planManage');
+    const res2 = formatterPaths(res);
+    console.log('res: ', res2);
+
+
+  </script>
+</body>
+
+</html>
