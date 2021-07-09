@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-07-07 08:58:27
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-07 09:03:50
+ * @LastEditTime: 2021-07-09 17:42:36
  * @Description: file content
  * @FilePath: \dayByday\webpack\webpack.config.md
 -->
@@ -42,3 +42,28 @@
     When defining as an array, webpack will look for dependencies in all these files and put them into the same "entry" file, basically it is categorized as 1 single file.
 
     What is happening with that project you linked is a combination of 1 + 3, which we could say it is a "4". That creates an object for each entry and each entry on that object is composed by an array of different other libraries.
+
+    ------------------------
+
+    ## [resolve](https://webpack.js.org/configuration/resolve/#resolve)
+
+    These're two ways to inform webpack of extra location to look for a module.
+
+    ```js
+    // webpack.config.js
+    module.exports = {
+      //...
+      resolve: {
+        // 1. add extra `node_modules` directory to search path
+        modules: ['node_modules', '/abs_path/to/global/node_modules'],
+        // 2. use alias to explicitly map a module name to its exact location
+        alias: {
+          '@abc': '/abs_path/to/global/node_modules/@abc'
+        }
+      }
+    };
+  ```
+-----------
+
+## VanillaJS:
+Using "VanillaJS" means using plain JavaScript without any additional libraries like jQuery.
