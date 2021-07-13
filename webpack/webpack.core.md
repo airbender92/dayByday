@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-07-12 15:46:30
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-12 18:38:21
+ * @LastEditTime: 2021-07-13 09:47:16
  * @Description: file content
  * @FilePath: \dayByday\webpack\webpack.core.md
 -->
@@ -239,3 +239,88 @@ In the example below, we are configuring `url-loader` to use DataURLs for images
 
 ## 7. The .babelrc file
 babel-loader uses “presets” configuration to know how to convert ES6 to ES5 and also how to parse React’s JSX to JS. We can pass the configuration via “query” parameter like below:
+```js
+module: {
+  loaders: [
+    {
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015']
+      }
+    }
+  ]
+}
+```
+
+However in many projects babel’s configuration can become very large. So instead you can keep those them in babel-loader’s configuration file called `.babelrc` file. `babel-loader` will `automatically load the .babelrc` file if it exists.
+So in many examples, you’ll see:
+
+```js
+// webpack.config.js
+module: {
+  loaders: [
+    {
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel'
+    }
+  ]
+}
+
+// .babelrc
+{
+  "presets": ["react", "es2015"]
+}
+```
+
+## 8.Plugins
+<b>Plugins are additional node modules that usually work on the resulting bundle.</b>
+
+For example, `uglifyJSPlugin` takes the `bundle.js` and `minimizes` and `obfuscates` the contents to `decrease the file size`
+
+Similarly `extract-text-webpack-plugin` internally uses `css-loader and style-loader` to gather all the CSS into one place and finally `extracts` the result into a separate external `styles.css` file and includes the link to `style.css into index.html`
+
+```js
+//webpack.config.js
+//Take all the .css files, combine their contents and it extract them to a single "styles.css"
+var ETP = require("extract-text-webpack-plugin");
+
+module: {
+ loaders: [
+  {test: /\.css$/, loader:ETP.extract("style-loader","css-loader") }
+  ]
+},
+plugins: [
+    new ExtractTextPlugin("styles.css") //Extract to styles.css file
+  ]
+}
+```
+
+Note: If you want to just inline CSS as a style element into HTML, you can do that without the `extract-text-webpack-plugin` and by just CSS and Style loaders like below:
+```js
+module: {
+ loaders: [{
+  test: /\.css$/,
+  loader: ‘style!css’ <--(short for style-loader!css-loader)
+ }]
+``` 
+
+## 9. Loaders Vs Plugins
+
+As you might have realized, Loaders work at the individual file level during or before the bundle is generated.
+
+Where as Plugins work at bundle or chunk level and usually work at the end of the bundle generation process. And some Plugins like commonsChunksPlugins go even further and modify how the bundles themselves are created.
+
+## 10. Resolving File Extensions
+
+Many Webpack config files have a `resolve extensions` property that has `an empty string` like shown below. `The empty string is there to help resolve imports without extensions like: require(“./myJSFile”) or import myJSFile from ‘./myJSFile’ without file extensions.`
+
+```js
+{
+ resolve: {
+   extensions: [‘’, ‘.js’, ‘.jsx’]
+ }
+}
+```
