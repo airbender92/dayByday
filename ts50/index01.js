@@ -2,16 +2,16 @@
  * @Author: wangyunbo
  * @Date: 2021-07-19 08:55:56
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-20 14:34:13
+ * @LastEditTime: 2021-07-20 17:44:30
  * @FilePath: \dayByday\ts50\index01.js
  * @Description: file content
  */
 
 // @ts-check
-const storage = {
-  max: undefined,
-  items: []
-}
+/**
+ * @typedef { import('./types.d').ShipStorage } ShipStorage
+ */
+/** @typedef { import('./types.d').StorageItem } StorageItem */
 
 Object.defineProperty(storage, 'max', {})
 
@@ -27,10 +27,20 @@ function storageUsed() {
   }
   return currentStorage
 }
-
+/**
+ * 
+ * @param {StorageItem} item 
+ */
 function add(item) {
   if (storage.max - item.weight >= storageUsed()) {
     storage.items.push(item)
     currentStorage += item.weight
   }
+  $('#numberOfItems').text(storage.items.length)
+}
+
+/**@type ShipStorage */
+const storage = {
+  max: undefined,
+  items: []
 }
