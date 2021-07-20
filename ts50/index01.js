@@ -2,18 +2,18 @@
  * @Author: wangyunbo
  * @Date: 2021-07-19 08:55:56
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-20 17:44:30
+ * @LastEditTime: 2021-07-20 18:01:08
  * @FilePath: \dayByday\ts50\index01.js
  * @Description: file content
  */
 
 // @ts-check
 /**
- * @typedef { import('./types.d').ShipStorage } ShipStorage
+ * @typedef { import('./@types/types').ShipStorage } ShipStorage
  */
-/** @typedef { import('./types.d').StorageItem } StorageItem */
+/** @typedef { import('./@types/types').StorageItem } StorageItem */
 
-Object.defineProperty(storage, 'max', {})
+// Object.defineProperty(storage, 'max', {})
 
 let currentStorage = undefined
 
