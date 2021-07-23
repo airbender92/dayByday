@@ -2,16 +2,22 @@
  * @Author: wangyunbo
  * @Date: 2021-07-22 17:00:28
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-22 18:01:00
+ * @LastEditTime: 2021-07-23 09:11:31
  * @FilePath: \dayByday\ts50\index03.ts
  * @Description: file content
  */
-import type { Article } from './index02'
+import type { Article, ShopItem } from './index02'
 
 const book: Article = {
   price: 29,
   vat: 0.2,
   title: 'another'
+}
+
+const shopItem: ShopItem = {
+  title: 'interaf',
+  price: 20,
+  vat: 0
 }
 
 
@@ -75,3 +81,32 @@ class TwentyPercentDiscount extends Discount {
 
 let disco1: Discount = new TwentyPercentDiscount()
 let disco2: TwentyPercentDiscount = new Discount(true, 0.3)
+
+discount.apply(shopItem)
+
+// implementing interfaces
+class DVD implements ShopItem {
+  title: string
+  price: number
+  vat: number
+  constructor(title: string) {
+    this.title = title
+    this.price = 9.99
+    this.vat = 0.2
+  }
+}
+
+// Implementing Types
+class Book implements Article {
+  title: string
+  price: number
+  vat: number
+  constructor(title: string) {
+    this.title = title
+    this.price = 9.99
+    this.vat = 0.2
+  }
+}
+
+let book2 = new Book('are')
+discount.apply(book2)

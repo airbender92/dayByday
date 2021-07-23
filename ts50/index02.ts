@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-07-22 15:42:47
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-22 17:00:17
+ * @LastEditTime: 2021-07-23 09:04:28
  * @FilePath: \dayByday\ts50\index02.ts
  * @Description: file content
  */
@@ -17,6 +17,14 @@ function selectDeliveryAddress(addressOrIndex: any): string {
 
 const myFavouriteAddress = selectDeliveryAddress(true)
 console.log(typeof myFavouriteAddress)
+
+export interface ShopItem {
+  title: string;
+  price: number;
+  vat: number;
+  stock?: number;
+  description?: string;
+}
 
 export type Article = {
   title: string,
@@ -111,3 +119,5 @@ function checkOrders(orders: Order2[]) {
   }
   return valid
 }
+
+
