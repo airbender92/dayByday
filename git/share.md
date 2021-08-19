@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-07-12 17:23:43
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-12 17:25:06
+ * @LastEditTime: 2021-08-19 09:13:47
  * @Description: file content
  * @FilePath: \dayByday\git\share.md
 -->
@@ -48,3 +48,26 @@
 A.使用document this的注释可以在vscode的代码提示工具中显示api，就像typescript一样的提示效果[图片] 
 
 B.可以自动生成api文档   参考：https://blog.csdn.net/u010065726/article/details/105051203
+
+-------------------------------------------------
+Git全局或者项目中将CRLF转为LF
+作者：广树 | 时间：2019-4-12 15:14:32 | 分类 : Git
+
+之前因为WINDOWS电脑和MAC电脑交互代码发生了CRLF和LF的问题。
+
+于是就想办法在GIT中统一。
+
+
+全局：
+
+git config --global core.autocrlf false
+
+
+项目中：
+
+进入项目输入
+
+git config --local core.autocrlf false
+重新拉取下项目就会自动转为LF。
+
+-------------------------------------------
