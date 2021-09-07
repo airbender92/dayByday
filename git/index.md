@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-02 17:14:08
+ * @LastEditTime: 2021-09-07 09:56:02
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -49,4 +49,15 @@ git reset --hard Obfafd
 
 git push -f origin master ## 这里假设只有一个master分支
 注意：本地分支回滚后，版本将落后远程分支，必须使用强制推送覆盖远程分支，否则无法推送到远程分支
+```
+
+
+```js
+// The -d option will delete the branch only if it has already been pushed and merged with the remote branch. 
+// Use -D instead if you want to force the branch to be deleted, even if it hasn't been pushed or merged yet.
+// delete branch locally
+git branch -d localBranchName
+
+// delete branch remotely
+git push origin --delete remoteBranchName
 ```
