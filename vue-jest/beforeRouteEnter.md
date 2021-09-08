@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-09-08 14:04:20
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-09-08 14:05:11
+ * @LastEditTime: 2021-09-08 17:37:43
  * @FilePath: \dayByday\vue-jest\beforeRouteEnter.md
  * @Description: file content
 -->
@@ -34,7 +34,7 @@ This is why simply creating a stub or mock callback of next does not work in thi
 const wrapper = mount(Component, {});
 
 // call the navigation guard manually
-Component.beforeRouteEnter.call(wrapper.vm, undefined, undefined, (c) => c(wrapper.vm));
+Component.beforeRouteEnter[0].call(wrapper.vm, undefined, undefined, (c) => c(wrapper.vm));
 
 // await 
 await wrapper.vm.$nextTick();
