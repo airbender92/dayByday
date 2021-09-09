@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-09-07 09:56:02
+ * @LastEditTime: 2021-09-09 11:29:29
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -31,6 +31,22 @@ Git克隆指定分支、指定目录
 git clone -b 分之名 http的git地址
 
 git clone -b 分之名 http的git地址 c:/User/zp/dev指定目录
+
+-------------------------------------------------------------------------------------------------------------------
+
+1.git clone 不指定分支
+
+ git clone  http://10.1.1.11/service/tmall-service.git
+
+ 
+2.git clone 指定分支
+
+ git clone -b dev_jk http://10.1.1.11/service/tmall-service.git
+命令中：多了一个  -b dev-jk,这个dev_jk就是分支，http://10.1.1.11/service/tmall
+-service.git为源码的仓库地址
+
+--------------------------------------------------------------------------------------------------------------------
+
 ```
 
 ```bat
