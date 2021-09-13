@@ -1,0 +1,62 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2021-09-13 15:58:22
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-09-13 15:58:22
+ * @FilePath: \dayByday\git\html\cornerdot.html
+ * @Description: file content
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="orange">
+    Some text here in stylized block
+  </div>
+
+  <style>
+    .orange {
+   width: 250px;
+   height: 70px;
+   border-radius: 3px;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 12px;
+   font-family: sans-serif;
+   padding: 5px 40px;
+   color: #fff;
+   background: #EBA146;
+   background-image: linear-gradient(to right, #EBA146, #E17233);
+   }
+.orange:before, .orange:after {
+   content: '';
+   display: block;
+   position: absolute;
+   background-color: #ffffff;
+   border-radius: 666px;
+   width: 12px;
+   height: 12px;
+   box-shadow: 0 57px 0 0 #fff
+   }
+.orange:before {
+   left: 5px;
+   top: 5px;
+   }
+.orange:after {
+   right: 5px;
+   top: 5px;
+   }
+  </style>
+</body>
+</html>
