@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-09-09 11:29:29
+ * @LastEditTime: 2021-09-14 09:39:48
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -77,3 +77,6 @@ git branch -d localBranchName
 // delete branch remotely
 git push origin --delete remoteBranchName
 ```
+
+- 查看git关联的文件路径
+Whether dirName is a directory managed by git. you can use command `git ls-files`
