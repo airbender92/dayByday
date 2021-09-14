@@ -1,0 +1,26 @@
+@function floatFn($fl) {
+  @if($fl == left) {
+    @return right;
+  }
+  @return left;
+}
+@function direction($dir){
+  @return $dir;
+}
+
+// 从对象中取值
+@function ha-map-get($map, $name) {
+  @each $label, $var in $map {
+    @if ($label = data-theme) {
+      @return map-get($var, $name);
+    }
+  }
+};
+// 相对1080p设计图，取对应宽度vw值
+@function ha-px-vw($width) {
+  @return $width/1920px*100vw;
+};
+// 相对1080p设计图，取对应高度vh值
+@function ha-px-vh($height) {
+  @return $height/1080px*100vh;
+};
