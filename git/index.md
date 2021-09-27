@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-05-17 09:26:50
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-09-14 09:39:48
+ * @LastEditTime: 2021-09-27 09:30:41
  * @Description: file content
  * @FilePath: \dayByday\git\index.md
 -->
@@ -80,3 +80,15 @@ git push origin --delete remoteBranchName
 
 - 查看git关联的文件路径
 Whether dirName is a directory managed by git. you can use command `git ls-files`
+
+```js
+// First check whether you have fetched all branches or not by executing following command (检查拉取所有分支)
+git fetch --all
+
+//Check for existence of branch name in local
+git branch -a
+
+//Execute command to track remote branch and create one in local
+git checkout -t origin/<Branch Name>
+
+```
