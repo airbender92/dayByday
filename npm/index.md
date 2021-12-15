@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2021-06-01 10:56:31
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-07-05 09:55:03
+ * @LastEditTime: 2021-12-15 09:25:42
  * @Description: file content
  * @FilePath: \dayByday\npm\index.md
 -->
@@ -71,3 +71,5 @@ $ npm config set https-proxy http://<username>:<password>@<proxy-server-url>:<po
 ```
 
 ###  Uninstalling packages
+
+npm config set registry http://128.196.0.xxx:9000/repository/npm-taobao/
