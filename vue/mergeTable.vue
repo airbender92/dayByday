@@ -1,17 +1,9 @@
 <!--
  * @Author: wangyunbo
- * @Date: 2021-12-29 08:52:51
- * @LastEditors: wangyunbo
- * @LastEditTime: 2021-12-29 08:52:57
- * @FilePath: \dayByday\vue\mergeTable.vue
- * @Description: file content
--->
-<!--
- * @Author: wangyunbo
  * @Date: 2021-12-28 14:00:54
  * @LastEditors: wangyunbo
- * @LastEditTime: 2021-12-28 17:50:18
- * @FilePath: \hatech-bcms-ui-1.0\src\views\main\ra\questionnaireManage\pound02\poundScoreTable.vue
+ * @LastEditTime: 2021-12-29 10:47:28
+ * @FilePath: \dayByday\vue\mergeTable.vue
  * @Description: file content
 -->
 <template>
@@ -51,7 +43,7 @@
 import Config from "./poundScoreTableConfig.js";
 import TableMerge from "@/components/tableMerge";
 export default {
-  name: 'poundScoreTable',
+  name: "poundScoreTable",
   components: {
     TableMerge,
   },
@@ -63,11 +55,11 @@ export default {
       prevData: [],
       // 行合并数据
       spanArr: [],
-      position: 0,
+      spanPos: [],
     };
   },
   mounted() {
-    this.rowspan(this.table.data, 'people');
+    this.rowspan(this.table.data, "people", "poundMax");
   },
   methods: {
     /**
@@ -159,48 +151,58 @@ export default {
     handleSubmit() {
       this.$message.warning("开发中");
     },
-
-    rowspan(data, dependProp) {
-           data.forEach((item,index) => {
-             if( index === 0){
-                 this.spanArr.push(1);   //第一行先占一行
-                 this.position = 0;    //给第一行的索引为0
-             }else{
-              //  让下一行与上一行作比较
-                if(dependProp) {
-                  if(data[index][dependProp] === data[index-1][dependProp]
-                    && data[index].poundMax === data[index-1].poundMax
-                  ) {
-                    this.spanArr[this.position] += 1;
-                     this.spanArr.push(0);
-                  } else {
-                    this.spanArr.push(1);
-                        this.position = index;
-                  }
-                } else {
-                   if(data[index].poundMax === data[index-1].poundMax ){
-                     this.spanArr[this.position] += 1;   //如果下一行与上一行相同，那么spanArr(要合并的)增加一行
-                     this.spanArr.push(0);      //当前行不显示
-                    }else{
-                        this.spanArr.push(1);   //如果第二行与第一行不相等，那么当前行自己占一行
-                        this.position = index;
-                    }
-                }
-
-             }
-         })
+    /**
+     * @param data - 数据源
+     * @param {string?} dependProp - 跨行时依赖的字段
+     * @param {string?} expecProp - 需要依赖于dependProp的属性
+     * @returns undefined
+     */
+    rowspan(data, dependProp, expecProp) {
+      const keys = Object.keys(data[0]);
+      data.forEach((_, index) => {
+        let rowArr = [];
+        keys.forEach((key, colIndex) => {
+          if (index === 0) {
+            rowArr.push(1); //第一行先占一行
+            this.spanPos.push(0); //给第一行的索引为0
+          } else {
+            // 有字段依赖项的处理
+            if (dependProp && expecProp && expecProp === key) {
+              if (
+                data[index][dependProp] === data[index - 1][dependProp] &&
+                data[index][expecProp] === data[index - 1][expecProp]
+              ) {
+                this.spanArr[this.spanPos[colIndex]][colIndex] += 1;
+                rowArr.push(0);
+              } else {
+                rowArr.push(1);
+                this.spanPos[colIndex] = index;
+              }
+            } else {
+              // 没有字段依赖项的处理
+              if (data[index][key] === data[index - 1][key]) {
+                this.spanArr[this.spanPos[colIndex]][colIndex] += 1; //如果下一行与上一行相同，那么spanArr(要合并的)增加一行
+                rowArr.push(0); //当前行不显示
+              } else {
+                rowArr.push(1); //如果第二行与第一行不相等，那么当前行自己占一行
+                this.spanPos[colIndex] = index;
+              }
+            }
+          }
+        });
+        this.spanArr.push(rowArr);
+      });
     },
-     objectSpanMethod({ row, column, rowIndex, columnIndex }) {  //表格合并行
-        // row是当前行，column是当前列，rowIndex是当前行的索引，columnIndex是当前列的索引
-         if(columnIndex === 8){
-             const _row = this.spanArr[rowIndex];  //合并行的行数，1代表独占一行，比1大代表合并若干行，0代表不显示
-             const _col = _row>0 ? 1 : 0;   //行如果存在那么列就存在，行不存在那么列也就不存在
-             return {
-                 rowspan: _row,
-                 colspan: _col
-             }
-         }
-     },
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+      //表格合并行
+      // row是当前行，column是当前列，rowIndex是当前行的索引，columnIndex是当前列的索引
+        const _row = this.spanArr[rowIndex][columnIndex]; //合并行的行数，1代表独占一行，比1大代表合并若干行，0代表不显示
+        const _col = _row > 0 ? 1 : 0; //行如果存在那么列就存在，行不存在那么列也就不存在
+        return {
+          rowspan: _row,
+          colspan: _col,
+        };
+    },
   },
 };
 </script>
