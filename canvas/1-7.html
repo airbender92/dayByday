@@ -1,0 +1,84 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2021-12-31 09:02:35
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-04 09:48:45
+ * @FilePath: \dayByday\canvas\1-7.html
+ * @Description: file content
+-->
+<!--
+ * @Author: wangyunbo
+ * @Date: 2021-12-31 08:49:31
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2021-12-31 08:56:24
+ * @FilePath: \dayByday\canvas\1-1.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas element size: 600 * 300
+    , canvas drawing surface size: 300 * 150
+  </title>
+  <style>
+    body {
+      background-color: #ddd;
+    }
+
+    #canvas {
+      margin: 10px;
+      padding: 10px;
+      background-color: #fff;
+      border: thin inset #aaa;
+      width: 600px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas">
+    Canvas not supported
+  </canvas>
+</body>
+<script>
+  var canvas = document.getElementById('canvas');
+  var context = canvas.getContext('2d');
+  var drawingSurfaceImageData = null;
+
+    function windowToCanvas(canvas, x, y) {
+        var bbox = canvas.getBoundingClientRect();
+        return {
+          x: x - bbox.left * (canvas.width / bbox.width),
+          y: y - bbox.top * (canvas.height / bbox.height)
+        }
+      }
+
+  function saveDrawingSurface(){
+    drawingSurfaceImageData = context.getImageData(0, 0, 
+      canvas.width,
+      canvas.height
+    );
+  }
+
+  function restoreDrawingSurface() {
+    context.putImageData(drawingSurfaceImageData, 0, 0);
+  }
+
+  canvas.onmousedown = function(e) {
+    saveDrawingSurface();
+  }
+
+  canvas.onmousemove = function(e) {
+    var loc = windowToCanvas(canvas, e.clientX, e.clientY);
+    if(dragging) {
+      restoreDrawingSurface();
+    }
+  }
+</script>
+
+</html>
