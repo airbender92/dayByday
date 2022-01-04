@@ -1,0 +1,70 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-04 14:02:20
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-04 14:13:02
+ * @FilePath: \dayByday\canvas\1-11.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <style>
+    body{
+      background: #ddd;
+    }
+    #canvas {
+      position: absolute;
+      left: 10px;
+      top: 1.5em;
+      margin: 20px;
+      border: thin solid #aaa;
+    }
+    #snapshotImageElement {
+      position: absolute;
+      left: 10px;
+      top: 1.5em;
+      margin: 20px;
+      border: thin solid #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <input type="button" id="spanshotButton" value="Take snapshot" />
+  </div>
+  <img alt="" id="snapshotImageElement" />
+  <canvas id="canvas" width='400' height='400' ></canvas>
+  <script>
+    var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d'),
+        snapshotButton = document.getElementById('snapshotButton'),
+        snapshotImageElement = document.getElementById('snapshotImageElement'),
+        loop;
+      
+      snapshotButton.onclick = function(e) {
+        var dataUrl;
+
+        if(snapshotButton.value === 'Take snapshot') {
+          dataUrl = canvas.toDataURL();
+          clearInterval(loop);
+          snapshotImageElement.src = dataUrl;
+          snapshotImageElement.style.display = 'inline';
+          canvas.style.display = 'none';
+          snapshotButton.value = 'Return to Canvas';
+        }
+        else {
+          canvas.style.display = 'inline';
+          snapshotImageElement.style.display = 'none';
+          // 定时重绘时钟事件
+          // loop = setInterval();
+          snapshotButton.value = 'Take snapshot';
+        }
+      }
+  </script>
+</body>
+</html>
