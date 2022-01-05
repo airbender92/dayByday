@@ -1,0 +1,47 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-05 11:24:09
+ * @FilePath: \dayByday\canvas\2-1.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var gradient = context.createLinearGradient(0, 0, canvas.width, 0);
+
+    gradient.addColorStop(0, 'blue');
+    gradient.addColorStop(0.25, 'white');
+    gradient.addColorStop(0.5, 'purple');
+    gradient.addColorStop(0.75, 'red');
+    gradient.addColorStop(1, 'yellow');
+
+    context.lineJoin = 'round';
+    context.lineWidth = 30;
+
+    context.font = '24px Helvetica';
+    context.fillText('Click anywhere to erase', 175, 200);
+
+    context.strokeStyle = 'goldderod';
+    context.fillStyle = gradient;
+
+    context.strokeRect(75, 100, 200, 200);
+    context.fillRect(75, 100, 200, 200);
+
+    context.canvas.onmousedown = function(e) {
+      context.clearRect(0, 0, canvas.width, canvas.height)
+    }
+  </script>
+</body>
+</html>
