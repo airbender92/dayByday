@@ -1,0 +1,75 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-11 09:53:13
+ * @FilePath: \dayByday\canvas\2-9.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+
+    #radios {
+      padding: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+ // Functions..............................
+ function drawGrid(color, stepx, stepy) {
+   //
+ }
+
+ function drawTwoArcs(){
+   context.beginPath();
+   context.arc(300, 190, 150, 0, Math.PI*2, false);
+   context.arc(300, 190, 100, 0, Math.PI*2, true);
+
+   context.fill();
+   context.shadowColor = undefined;
+   context.shadowOffsetX = 0;
+   context.shadowOffsetY = 0;
+   context.stroke();
+ }
+
+ function draw() {
+   context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+   drawGrid('lightgray', 10, 10);
+   context.save();
+
+   context.shadowColor = 'rgba(0, 0, 0, 0.8)';
+   context.shadowOffsetX = 12;
+   context.shadowOffsetY = 12;
+   context.shadowBlur = 15;
+
+   drawTwoArcs();
+
+   context.restore();
+
+ }
+ // Iniitalization............................
+ context.fillStyle = 'rgba(100, 140, 230, 0.5)';
+ context.strokeStyle = context.fillStyle;
+ draw();
+
+  </script>
+</body>
+
+</html>

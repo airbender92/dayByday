@@ -1,0 +1,47 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-11 10:28:45
+ * @FilePath: \dayByday\canvas\2-11.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+
+    #radios {
+      padding: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+   
+    context.lineWidth = 1;
+    context.beginPath();
+    context.moveTo(50, 10);
+    context.lineTo(450, 10);
+    context.stroke();
+    context.beginPath();
+    context.moveTo(50.5, 50.5);
+    context.lineTo(450.5, 50.5);
+    context.stroke();
+  </script>
+</body>
+
+</html>

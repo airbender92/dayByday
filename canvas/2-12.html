@@ -1,0 +1,105 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-11 15:40:36
+ * @FilePath: \dayByday\canvas\2-12.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+
+    #radios {
+      padding: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+   var AXIS_MARGIN = 40,
+      AXIS_ORIGIN = { x: AXIS_MARGIN, y: canvas.height-AXIS_MARGIN},
+      AXIS_TOP = AXIS_MARGIN,
+      AXIS_RIGHT = canvas.width - AXIS_MARGIN,
+
+      HORIZONTAL_TICK_SPACING = 10,
+      VERTICAL_TICK_SPACING = 10,
+
+      AXIS_WIDTH = AXIS_RIGHT - AXIS_ORIGIN.x,
+      AXIS_HEIGHT = AXIS_ORIGIN.y - AXIS_TOP,
+
+      NUM_VERTICAL_TICKS = AXIS_HEIGHT / VERTICAL_TICK_SPACING,
+      NUM_HORIZONTAL_TICKS = AXIS_WIDTH / HORIZONTAL_TICK_SPACING,
+
+      TICK_WIDTH = 10,
+      TICKS_LINEWIDTH = 0.5,
+      TICKS_COLOR = 'navy',
+
+      AXIS_LINEWIDTH = 1.0,
+      AXIS_COLOR = 'blue';
+
+      // Function................
+      function drawGrid(color, stepx, stepy){
+
+      }
+      function drawAxes(){
+        context.save();
+        context.strokeStyle = AXIS_COLOR;
+        context.lineWidth = AXIS_LINEWIDTH;
+
+        drawHorizontalAxis();
+        drawVerticalAxis();
+
+        context.lineWidth = 0.5;
+        context.lineWidth = TICKS_LINEWIDTH;
+        context.strokeStyle = TICKS_COLOR;
+
+        drawVerticalAxisTicks();
+        drawHorizontalAxisTicks();
+
+        context.restore();
+      }
+
+      function drawHorizontalAxis() {
+        context.beginPath();
+        context.moveTo(AXIS_ORIGIN.x, AXIS_ORIGIN.y);
+        context.lineTo(AXIS_RIGHT, AXIS_ORIGIN.y);
+        context.stroke();
+      }
+
+      function drawVerticalAxis() {
+        context.beginPath();
+        context.moveTo(AXIS_ORIGIN.x, AXIS_ORIGIN.y);
+        context.lineTo(AXIS_ORIGIN.x, AXIS_TOP);
+        context.stroke();
+      }
+
+      function drawVerticalAxisTicks() {
+        var deltaY;
+        for(var i =1; i < NUM_VERTICAL_TICKS; ++i) {
+          context.beginPath();
+          if(i % 5 === 0) {
+            deltaX = TICK_WIDTH;
+            deltaX = TICK_WIDTH/2
+          }
+        }
+      }
+  </script>
+</body>
+
+</html>

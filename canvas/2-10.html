@@ -1,0 +1,125 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-11 10:22:40
+ * @FilePath: \dayByday\canvas\2-10.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+
+    #radios {
+      padding: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+     // Functions..............................
+      function drawGrid(color, stepx, stepy) {
+        //
+      }
+      
+    function draw() {
+      context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+      drawGrid('lightgray', 10, 10);
+
+      context.save();
+
+      context.shadowColor = 'rgba(200, 200, 0, 0.5)';
+      context.shadaowOffsetX = 12;
+      context.shadowOffsetY = 12;
+      context.shadowBlur = 15;
+
+      drawCutouts();
+      strokeCutoutShapes();
+      context.restore();
+    }
+
+    function drawCutouts() {
+      context.beginPath();
+      addOuterRectanglePath();
+
+      addCirclePath();
+      addRectanglePath();
+      addTrianglePath();
+
+      context.fill();
+    }
+
+
+    function strokeCutoutShapes() {
+      context.save();
+      context.strokeStyle = 'rgba(0, 0, 0, 0.7)';
+      context.beginPath();
+
+      addOuterRectanglePath();
+      context.stroke();
+
+      context.beginPath();
+
+      addCirclePath();
+      addRectanglePath();
+      addTrianglePath();
+      context.stroke();
+
+      context.restore();
+    }
+
+    function rect(x, y, w, h, direction) {
+      if(direction) { // CCW
+        context.moveTo(x, y);
+        context.lineTo(x, y + h);
+        context.lineTo(x + w, y + h);
+        context.lineTo(x + w, y);
+      } else {
+        context.moveTo(x, y);
+        context.lineTo(x + w, y);
+        context.lineTo(x + w, y + h);
+        context.lineTo(x, y + h);
+      }
+      context.closePath();
+    }
+
+    function addOuterRectanglePath() {
+      context.rect(110, 25, 370, 335);
+    }
+    function addCirclePath() {
+      context.arc(300, 300, 40, 0, Math.PI*2, true)
+    }
+
+    function addRectanglePath() {
+      rect(310, 55, 70, 35, true)
+    }
+
+    function addTrianglePath() {
+      context.moveTo(400, 200);
+      context.lineTo(250, 115);
+      context.lineTo(200, 200);
+      context.closePath()
+    }
+
+    // INitial
+    context.fillStyle = 'goldenrod';
+    draw()
+  </script>
+</body>
+
+</html>

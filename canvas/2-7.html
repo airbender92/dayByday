@@ -1,0 +1,60 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-05 09:14:57
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-10 08:41:05
+ * @FilePath: \dayByday\canvas\2-7.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+
+    #radios {
+      padding: 10px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="radios">
+    <input type="radio" name="patternRadio" id="repeatRadio" checked />repeat
+    <input type="radio" name="patternRadio" id="repeatXRadio" checked />repeatX
+    <input type="radio" name="patternRadio" id="repeatYRadio" checked />repeatY
+    <input type="radio" name="patternRadio" id="noRepeatRadio" checked />no-repeat
+  </div>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    var SHADOW_COLOR = 'rgba(0, 0, 0, 0.7)';
+
+    function setIconShadow(){
+      iconContext.shadowColor = SHADOW_COLOR;
+      iconContext.shadowOffsetX = 1;
+      iconContext.shadowOffsetY = 1;
+      iconContext.shadowBlur = 2;
+    }
+
+    function setSelectedIconShadow() {
+      iconContext.shadowColor = SHADOW_COLOR;
+      iconContext.shadowOffsetX = 4;
+      iconContext.shadowOffsetY = 4;
+      iconContext.shadowBlur = 5;
+    }
+
+  </script>
+</body>
+
+</html>
