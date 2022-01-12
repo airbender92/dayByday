@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2022-01-05 09:14:57
  * @LastEditors: wangyunbo
- * @LastEditTime: 2022-01-11 15:40:36
+ * @LastEditTime: 2022-01-12 08:54:20
  * @FilePath: \dayByday\canvas\2-12.html
  * @Description: file content
 -->
@@ -55,7 +55,20 @@
 
       // Function................
       function drawGrid(color, stepx, stepy){
-
+        context.strokeStyle = color;
+        context.lineWidth = 0.5;
+        for(var i = stepx + 0.5; i < context.canvas.width; i+=stepx) {
+          context.beginPath();
+          context.moveTo(i, 0);
+          context.lineTo(i, context.canvas.height);
+          context.stroke();
+        }
+        for(var i = stepy + 0.5; i < context.canvas.height; i+=stepy) {
+          context.beginPath();
+          context.moveTo(0, i);
+          context.lineTo(context.canvas.width, i);
+          context.stroke()
+        }
       }
       function drawAxes(){
         context.save();
@@ -90,15 +103,45 @@
       }
 
       function drawVerticalAxisTicks() {
-        var deltaY;
+        var deltaX;
         for(var i =1; i < NUM_VERTICAL_TICKS; ++i) {
           context.beginPath();
           if(i % 5 === 0) {
             deltaX = TICK_WIDTH;
-            deltaX = TICK_WIDTH/2
+          } 
+          else {
+            deltaX = TICK_WIDTH / 2
           }
+          context.moveTo(AXIS_ORIGIN.x - deltaX,
+                          AXIS_ORIGIN.y - i*VERTICAL_TICK_SPACING
+          );
+          context.lineTo(AXIS_ORIGIN.x + deltaX,
+            AXIS_ORIGIN.y - i*VERTICAL_TICK_SPACING
+          );
+          context.stroke()
         }
       }
+
+      function drawHorizontalAxisTicks() {
+        var deltaY;
+        for(var i=1; i<NUM_HORIZONTAL_TICKS; ++i) {
+          context.beginPath();
+          if(i%5 === 0) {
+            deltaY = TICK_WIDTH;
+          } else {
+            deltaY = TICK_WIDTH/2;
+          }
+          context.moveTo(AXIS_ORIGIN.x + i*HORIZONTAL_TICK_SPACING,
+            AXIS_ORIGIN.y - deltaY);
+          
+          context.lineTo(AXIS_ORIGIN.x + i*HORIZONTAL_TICK_SPACING,
+            AXIS_ORIGIN.y + deltaY);
+          context.stroke();
+        }
+      }
+      // Initial..............
+      drawGrid('lightgray', 10, 10);
+      drawAxes()
   </script>
 </body>
 
