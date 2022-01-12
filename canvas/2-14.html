@@ -1,0 +1,70 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-12 10:39:35
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-12 10:48:27
+ * @FilePath: \dayByday\canvas\2-14.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dash line</title>
+  <style>
+    body {
+      background: #eee;
+    }
+  
+    #controls {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+    }
+  
+    #canvas {
+      background: #fff;
+      cursor: pointer;
+      margin-left: 10px;
+      margin-top: 10px;
+      box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="400"></canvas>
+
+  <script>
+    var context = document.getElementById('canvas').getContext('2d');
+
+    function drawDashedLine(context, x1, y1, x2, y2, dashLength) {
+      dashLength = dashLength === undefined ? 5 : dashLength;
+
+      var deltaX = x2 - x1;
+      var deltaY = y2 - y1;
+      var numDashes = Math.floor(
+        Math.sqrt(deltaX * deltaX + deltaY * deltaY) / dashLength
+      )
+
+      for(var i = 0; i < numDashes; i++) {
+        context[ i % 2 === 0 ? 'moveTo' : 'lineTo']
+          (x1 + (deltaX / numDashes) * i, y1 + (deltaY / numDashes) * i);
+      }
+      context.stroke();
+    };
+
+    context.lineWidth = 3;
+    context.strokeStyle = 'blue';
+    drawDashedLine(context, 20, 20, context.canvas.width-20, 20);
+    drawDashedLine(context, context.canvas.width-20, 20,
+      context.canvas.width-20, context.canvas.height-20, 10);
+    
+      drawDashedLine(context, context.canvas.width-20,
+        context.canvas.height-20, 20, context.canvas.height-20, 15);
+      
+      drawDashedLine(context, 20, context.canvas.height-20, 20, 20, 2)
+  </script>
+</body>
+</html>
