@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2022-01-11 14:14:37
  * @LastEditors: wangyunbo
- * @LastEditTime: 2022-01-11 14:22:25
+ * @LastEditTime: 2022-01-12 11:29:15
  * @FilePath: \dayByday\javascript\export.html
  * @Description: file content
 -->
@@ -13,22 +13,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #lineTd {
+ background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjEwMCUiIHkyPSIxMDAlIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=) no-repeat 100% center;   
+}
+  </style>
 </head>
 <body>
 <a href="#" id="tests" onClick="javascript:fnExcelReport();">Download</a><br><br>
 
 <table id="myTable">
-  <tr style="background-color: black; color: white; font-size: 10px;">
-    <th>Name</th>
-    <th>Last name</th>
-    <th>age</th>
-  </tr>
-  <tr>
-    <td>Bob</td>
-    <td>John</td>
-    <td>21</td>
-
-  </tr>
+  <tbody>
+    <tr>
+      <td id="lineTd" style="background: #fff url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjEwMCUiIHkyPSIxMDAlIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=) no-repeat 100% center;   ">
+        <span style="float:left;margin-top:20px;">项目</span>
+        <span style="float:right;margin-top:-10px;">日期</span>
+      </td>
+      <td>2010-10-15</td>
+    </tr>
+    <tr>
+      <td>采购</td>
+      <td>9000元</td>
+    </tr>
+  </tbody>
 
 </table>
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
