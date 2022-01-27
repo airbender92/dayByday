@@ -1,0 +1,73 @@
+<!--
+ * @Author: wangyunbo
+ * @Date: 2022-01-19 08:30:14
+ * @LastEditors: wangyunbo
+ * @LastEditTime: 2022-01-20 08:50:15
+ * @FilePath: \dayByday\canvas\2-17.html
+ * @Description: file content
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #canvas {
+      background: #eee;
+      border: thin solid cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width='500' height="500"></canvas>
+  <script>
+    var context = document.getElementById('canvas').getContext('2d');
+    // Function ...............
+    function roundedRect(cornerX, cornerY, width, height, cornerRadius) {
+      if(width > 0) {
+        context.moveTo(cornerX + cornerRadius, cornerY);
+      }
+      else {
+        context.moveTo(cornerX - cornerRadius, cornerY);
+      }
+      context.arcTo(cornerX + width, cornerY,
+        cornerX + width, cornerY + height, cornerRadius
+      );
+      context.arcTo(cornerX + width, cornerY + height,
+        cornerRadius
+      );
+      context.arcTo(cornerX, cornerY, cornerX + cornerRadius, cornerY,
+        cornerRadius);
+
+      if(width > 0) {
+        context.arcTo(cornerX, cornerY,
+          cornerX + cornerRadius, cornerY, cornerRadius
+        )
+      }
+      else {
+        context.arcTo(cornerX, cornerY,
+        cornerX - cornerRadius, cornerY, cornerRadius)
+      }
+    }
+
+    function drawRoundedRect(
+      strokeStyle, fillStyle, cornerX, cornerY, width, height, cornerRadius
+    ) {
+      context.beginPath();
+      roundedRect(cornerX, cornerY, width, height, cornerRadius);
+      context.strokeStyle = strokeStyle;
+      context.fillStyle = fillStyle;
+
+      context.stroke();
+      context.fill();
+    }
+
+    drawRoundedRect('blue', 'yellow', 50, 40, 100, 100, 10);
+    drawRoundedRect('blue', 'yellow', 275, 40, -100, 100, 20);
+    drawRoundedRect('blue', 'yellow', 300, 140, 100, -100, 30);
+    drawRoundedRect('blue', 'yellow', 525, 140, -100, -100, 40);
+  </script>
+</body>
+</html>
