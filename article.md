@@ -2,7 +2,7 @@
  * @Author: wangyunbo
  * @Date: 2022-01-18 16:58:57
  * @LastEditors: wangyunbo
- * @LastEditTime: 2022-01-27 17:13:59
+ * @LastEditTime: 2022-01-29 15:11:57
  * @FilePath: \dayByday\article.md
  * @Description: file content
 -->
@@ -11,6 +11,7 @@
 
 
 ## react mobx
+[多语言实用文章demo](https://programmer.help/blogs/the-difference-between-stoppropagation-and-stopimmediatepropagation.html)
 [react hooks & mobx](https://dev.to/cakasuma/using-mobx-hooks-with-multiple-stores-in-react-3dk4)
 
 [react-hooks useCallback useMemo debounce](https://kyleshevlin.com/debounce-and-throttle-callbacks-with-react-hooks)
