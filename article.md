@@ -2,10 +2,13 @@
  * @Author: wangyunbo
  * @Date: 2022-01-18 16:58:57
  * @LastEditors: wangyunbo
- * @LastEditTime: 2022-01-29 15:11:57
+ * @LastEditTime: 2022-01-30 15:46:03
  * @FilePath: \dayByday\article.md
  * @Description: file content
 -->
+## js
+[prototype vs this](https://stackoverflow.com/questions/310870/use-of-prototype-vs-this-in-javascript)
+
 ## npm webpack component
 [npm publish react component](https://medium.com/dailyjs/building-a-react-component-with-webpack-publish-to-npm-deploy-to-github-guide-6927f60b3220)
 
