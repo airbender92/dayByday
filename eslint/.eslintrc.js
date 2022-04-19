@@ -6,6 +6,10 @@
  * @Description: file content
  * @FilePath: \dayByday\eslint\.eslintrc.js
  */
+// Expected linebreaks to be 'LF' but found 'CRLF' linebreak-style
+rules: {
+        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+ }
 module.exports = {
   "rules": {
     "no-unused-vars": "off"
