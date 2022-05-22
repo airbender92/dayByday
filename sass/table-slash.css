@@ -1,0 +1,4 @@
+/* Simple Way */
+.diagonalCross2 {
+  background: linear-gradient(to top right, #fff calc(50% - 1px), black, #fff calc(50% + 1px))
+}
